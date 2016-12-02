@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+	<title>cadastrar Clientes</title>
+</h:head>
+
+<ui:composition template="TemplateBase.xhtml">
+
+	<ui:define name="conteudoCenter">
+
+		<h:form>
+
+			<div align="center"
+			style="width: 600px; height: 500px; position: absolute; top: 0%; left: 28%; min-height: 200px">
+
+				<p:panel header="Digite os dados do novo cliente"
+					style="width: 670px">
+
+					<p:messages autoUpdate="true" />
+
+					<p:growl id="msgs" showDetail="true" />
+					<p:panelGrid columns="2">
+
+						<p:outputLabel for="nome" value="Nome completo:" />
+						<p:inputText id="nome" size="50" required="true"
+							value="#{controleClienteMB.cliente.nome}" showOn="">
+						</p:inputText>
+
+						<p:outputLabel for="cpf" value="CPF:" />
+						<p:inputText id="cpf" size="11" required="true"
+							value="#{controleClienteMB.cliente.cpf}" showOn="">
+						</p:inputText>
+
+						<p:outputLabel for="email" value="E-Mail:" />
+						<p:inputText id="email" size="26" required="true"
+							value="#{controleClienteMB.cliente.email}" showOn="">
+						</p:inputText>
+
+						<p:outputLabel for="telefone" value="Telefone:" />
+						<p:inputText id="telefone" size="20" required="true"
+							value="#{controleClienteMB.cliente.telefone}" showOn="">
+						</p:inputText>
+
+						<p:commandButton value="#{msgs.btnCadastrar}"
+							action="#{controleClienteMB.cadastrarCliente}" />
+
+						<p:outputLabel value="Todos os campos com * são obrigatorios" />
+
+					</p:panelGrid>
+
+				</p:panel>
+
+
+
+
+
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

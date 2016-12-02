@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Editar Produtos</title>
+</h:head>
+
+<ui:composition template="TemplateBase.xhtml">
+
+	<ui:define name="titulo">Editar Produtos</ui:define>
+
+	<ui:define name="conteudoCenter">
+		<h:form id="form">
+
+			<div align="center"
+				style="width: 600px; height: 500px; position: absolute; top: 0%; left: 30%; min-height: 200px">
+
+				<p:panel header="Faça as alterações necessarias"
+					style="width: 600px" styleClass="panelGridCenter">
+
+					<h:inputHidden id="id" value="#{controleProdutoMB.produto.id}" />
+					<p:panelGrid columns="2">
+						<p:outputLabel for="nomeProduto" value="#{msgs.campoNomeProduto}" />
+						<p:inputText id="nomeProduto" required="true"
+							value="#{controleProdutoMB.produto.nomeProduto}" />
+
+						<p:outputLabel for="marcaProduto"
+							value="#{msgs.campoMarcaProduto}" />
+						<p:inputText id="marcaProduto" required="true"
+							value="#{controleProdutoMB.produto.marcaProduto}" />
+
+						<p:outputLabel for="precoProduto"
+							value="#{msgs.campoPrecoProduto}" />
+						<p:inputNumber id="precoProduto" required="true"
+							value="#{controleProdutoMB.produto.precoProduto}">
+						</p:inputNumber>
+
+						<p:outputLabel for="button" value="#{msgs.campoDataFProduto}" />
+						<p:calendar id="button" required="true"
+							value="#{controleProdutoMB.produto.dataFabricacao}"
+							showOn="button">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:calendar>
+
+						<p:outputLabel for="button" value="#{msgs.campoDataVProduto}" />
+						<p:calendar id="btn" required="true"
+							value="#{controleProdutoMB.produto.dataVencimento}"
+							showOn="button">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</p:calendar>
+
+						<p:outputLabel for="descricao" value="#{msgs.DescLista}" />
+						<p:inputTextarea size="150" id="descricao" required="true"
+							value="#{controleProdutoMB.produto.marcaProduto}" />
+
+						<p:commandButton value="#{msgs.btnAlterar}" image="ui-icon-close"
+							action="#{controleProdutoMB.cadastrarProduto}">
+
+							<p:confirm header="Confirmação de Alteração"
+								message="Deseja alterar o produto ?" icon="ui-icon-alert" />
+						</p:commandButton>
+
+
+
+					</p:panelGrid>
+
+				</p:panel>
+
+			</div>
+		</h:form>
+
+		<h:form>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes">
+					<f:param value="#{item.id}" name="itemId" />
+				</p:commandButton>
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>
+</html>

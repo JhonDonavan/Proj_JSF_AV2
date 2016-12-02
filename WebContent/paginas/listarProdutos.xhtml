@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Lista de Produtos</title>
+</h:head>
+
+<ui:composition template="TemplateBase.xhtml">
+
+	<ui:define name="titulo">Lista de Produtos</ui:define>
+
+	<ui:define name="conteudoCenter">
+		<h:form id="form">
+			<h:inputHidden id="id" value="#{controleProdutoMB.produto.id}" />
+			<p:dataTable id="lista" var="item"
+				value="#{controleProdutoMB.produtos}">
+
+				<h:outputText value="testando tag" />
+				<f:facet name="header">
+					<h:outputText value="#{msgs.campoTop1}" />
+				</f:facet>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{item.id}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msgs.nomeLista}" />
+					</f:facet>
+					<h:outputText value="#{item.nomeProduto}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msgs.marcaLista}" />
+					</f:facet>
+					<h:outputText value="#{item.marcaProduto}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msgs.precoLista}" />
+					</f:facet>
+					<h:outputText value="#{item.precoProduto}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msgs.DescLista}" />
+					</f:facet>
+					<h:outputText value="#{item.precoProduto}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msgs.acoesLista}" />
+					</f:facet>
+					<h:panelGroup column="2">
+						<p:commandButton ajax="false" type="push" value="#{msgs.btnAlterar}"
+							action="#{controleProdutoMB.alterarProduto}" immediate="true"
+							image="ui-icon-pencil">
+							<f:param value="#{item.id}" name="itemId" />
+						</p:commandButton>
+
+						<p:commandButton ajax="false" type="push" value="#{msgs.btnExcluir}"
+							imediate="true" image="ui-icon-close"
+							action="#{controleProdutoMB.acaoExcluir}">
+							<f:param value="#{item.id}" name="itemId" />
+						</p:commandButton>
+
+
+					</h:panelGroup>
+				</p:column>
+				
+				
+			</p:dataTable>
+		</h:form>
+		
+		
+		<h:form>		
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" >
+							<p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes">
+							
+							</p:commandButton>
+							<p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no"/>
+				</p:confirmDialog>
+		</h:form>
+		
+	</ui:define>
+
+
+</ui:composition>
+</html>

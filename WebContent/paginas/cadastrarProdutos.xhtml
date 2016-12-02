@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+	<title>Cadastrar Produto</title>
+</h:head>
+
+<ui:composition template="TemplateBase.xhtml">
+
+	<ui:define name="conteudoCenter">
+		<!-- <p:messages id="messages" showDetail="true" autoUpdate="true" /> -->
+		<div align="center">
+			<h:form>
+
+				<div align="center"
+					style="width: 600px; height: 500px; position: absolute; top: 0%; left: 28%; min-height: 200px">
+
+					<p:panel header="Digite os dados do novo produto"
+						style="width: 550px">
+						<p:messages autoUpdate="true" />
+
+						<p:growl id="msgs" showDetail="true" />
+						<p:panelGrid columns="2">
+							<p:outputLabel for="nomeProduto" value="#{msgs.campoNomeProduto}" />
+							<p:inputText id="nomeProduto"
+								value="#{controleProdutoMB.produto.nomeProduto}" required="true"
+								requiredMessage="#{msgs.msgNomeProd}" />
+
+							<p:outputLabel for="marcaProduto"
+								value="#{msgs.campoMarcaProduto}" />
+							<p:inputText id="marcaProduto"
+								value="#{controleProdutoMB.produto.marcaProduto}"
+								required="true" requiredMessage="#{msgs.msgMarcaProd}" />
+
+							<p:outputLabel for="precoProduto"
+								value="#{msgs.campoPrecoProduto}" />
+							<p:inputNumber id="precoProduto"
+								value="#{controleProdutoMB.produto.precoProduto}"
+								required="true" requiredMessage="#{msgs.msgPrecoProd}">
+							</p:inputNumber>
+
+							<p:outputLabel for="qtdEstoque" value="Quantidade" />
+							<p:inputNumber id="qtdEstoque"
+								value="#{controleProdutoMB.produto.qtdEstoque}" required="true"
+								requiredMessage="#{msgs.msgPrecoProd}">
+							</p:inputNumber>
+
+							<p:outputLabel for="button" value="#{msgs.campoDataFProduto}" />
+							<p:calendar id="button"
+								value="#{controleProdutoMB.produto.dataFabricacao}"
+								showOn="button" required="true"
+								requiredMessage="#{msgs.msgDataFProd}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:calendar>
+
+							<p:outputLabel for="button" value="#{msgs.campoDataVProduto}" />
+							<p:calendar id="btn"
+								value="#{controleProdutoMB.produto.dataVencimento}"
+								showOn="button" required="true"
+								requiredMessage="#{msgs.msgDataVProd}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:calendar>
+
+							<p:outputLabel for="descricao" value="Descrição" />
+							<p:inputTextarea size="150" id="descricao"
+								value="#{controleProdutoMB.produto.descricao}" required="true"
+								requiredMessage="#{msgs.msgMarcaDesc}" />
+								
+								<p:commandButton value="#{msgs.btnCadastrar}"
+							action="#{controleProdutoMB.cadastrarProduto}" />
+							
+							<p:outputLabel value="Todos os campos com * são obrigatorios" />
+
+						</p:panelGrid>
+
+						
+
+					</p:panel>
+					
+					<p:separator />
+			
+
+				</div>
+			</h:form>
+			
+		</div>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login</title>
+</h:head>
+
+<h:body>
+	<h:form>
+
+		<div align="center"
+			style="width: 600px; height: 500px; position: absolute; top: 10%; left: 30%; min-height: 200px">
+			<p:panel header="Digite seu usuário e senha" style="width: 400px">
+			<p:messages autoUpdate="true" />
+				<p:panelGrid columns="2">
+					<p:outputLabel value="#{msgs.campoLogin}: " />
+					<p:inputText required="true" requiredMessage="#{msgs.msgLoginObg}"
+						value="#{loginMB.admSistema.login}" />
+
+					<p:outputLabel value="#{msgs.campoSenha}: " />
+					<p:password required="true" requiredMessage="#{msgs.msgSenhaObg}"
+						value="#{loginMB.admSistema.senha}" />
+
+					<p:commandButton value="#{msgs.botaoEnviar}"
+						action="#{loginMB.acaoAutenticar}" />
+
+					<p:link value="#{msgs.campoCriarConta}"
+						outcome="cadastrarAdm.xhtml" />
+				</p:panelGrid>
+
+			</p:panel>
+
+
+		</div>
+	</h:form>
+
+
+</h:body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Editar Cliente</title>
+</h:head>
+
+<ui:composition template="TemplateBase.xhtml">
+
+	<ui:define name="titulo">Editar Clientes</ui:define>
+
+	<ui:define name="conteudoCenter">
+		<h:form id="form">
+		
+		<div>
+
+
+			<div align="center"
+				style="width: 600px; height: 500px; position: absolute; top: 0%; left: 28%; min-height: 200px">
+
+
+				<h:inputHidden id="id" value="#{controleClienteMB.cliente.id}" />
+
+
+				<p:panel header="Faça as alterações necessarias"
+					style="width: 670px" styleClass="panelGridCenter">
+					<p:panelGrid columns="2">
+
+						<p:outputLabel for="nome" value="Nome" />
+						<p:inputText id="nome" size="50" required="true"
+							value="#{controleClienteMB.cliente.nome}" />
+
+						<p:outputLabel for="cpf" value="CPF" />
+						<p:inputText id="cpf" size="11"  required="true"
+							value="#{controleClienteMB.cliente.cpf}" />
+
+
+						<p:outputLabel for="email" value="E-Mail" />
+						<p:inputText id="email" size="26" required="true"
+							value="#{controleClienteMB.cliente.email}" />
+
+
+						<p:outputLabel for="telefone" value="telefone" />
+						<p:inputText id="telefone" size="20" required="true"
+							value="#{controleClienteMB.cliente.telefone}" />
+
+						<p:commandButton value="#{msgs.btnAlterar}" image="ui-icon-close"
+							action="#{controleClienteMB.cadastrarCliente}">
+
+							<p:confirm header="Confirmação de Alteração"
+								message="Deseja Alterar o cliente ?" icon="ui-icon-alert" />
+							<f:param value="#{item.id}" name="itemId" />
+						</p:commandButton>
+
+					</p:panelGrid>
+
+				</p:panel>
+
+			</div>
+			
+			</div>
+		</h:form>
+
+		<h:form>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes">
+
+				</p:commandButton>
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>
+</html>

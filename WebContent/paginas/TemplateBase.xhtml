@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Template</title>
+	<script type="text/javascript" src="../js/primefaces.js" />
+</h:head>
+
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" resizable="false" closable="false"
+			collapsible="false">
+			<div align="right">
+				<h:form>
+				<h:messages>
+					<p:outputLabel value="#{msgs.campoLogin}: " />
+					<h:outputText value="#{loginMB.admSistema.login}" />
+					<p:spacer width="50" height="10" />
+					<p:commandButton value="#{msgs.btnSair}"
+						action="#{loginMB.logout}"
+						style="width:80px; heigth:20px; font-siza:80%">
+						<p:confirm header="#{msgs.msgConfirm}" message="#{msgs.msgSair}"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+					</h:messages>
+				</h:form>
+			</div>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="200" resizable="false"
+			closable="false" collapsible="false">
+			<h:form>
+				<p:panelMenu>
+					<p:submenu label="#{msgs.campoIncioHome}">
+						<p:menuitem value="#{msgs.campoPrin}" outcome="home.xhtml" />
+						<p:menuitem value="#{msgs.campoSair}" action="#{loginMB.logout}">
+							<p:confirm header="#{msgs.msgConfirm}"
+								message="#{msgs.sairSist}" icon="ui-icon-alert" />
+						</p:menuitem>
+					</p:submenu>
+					
+					<p:submenu label="#{msgs.campoProduto}">
+						<p:menuitem value="#{msgs.campoCadProd}"
+							outcome="cadastrarProdutos.xhtml" />
+						<p:menuitem value="#{msgs.campoListProd}" 
+						outcome="listarProdutos.xhtml" />
+					</p:submenu>
+					
+					<p:submenu label="#{msgs.campoCliente}">
+						<p:menuitem value="#{msgs.campoCadCliente}"
+							outcome="cadastrarCliente.xhtml" />
+						<p:menuitem value="#{msgs.campoListarClientes}" 
+						outcome="listarClientes.xhtml" />
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</p:layoutUnit>
+
+		<h:form>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="#{msgs.campoSim}" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+					action="#{loginMB.logout}" />
+				<p:commandButton value="#{msgs.campoNao}" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+
+		<p:layoutUnit position="center" resizable="false" closable="false"
+			collapsible="false">
+			<ui:insert name="conteudoCenter" />
+		</p:layoutUnit>
+	</p:layout>
+
+
+	<div align="left">
+		<p:messages id="msgs" showSummary="true" showDetail="false" />
+	</div>
+
+</h:body>
+
+</html>
