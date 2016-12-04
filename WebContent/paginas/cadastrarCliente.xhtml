@@ -21,7 +21,7 @@
 			<div align="center"
 			style="width: 600px; height: 500px; position: absolute; top: 0%; left: 28%; min-height: 200px">
 
-				<p:panel header="Digite os dados do novo cliente"
+				<p:panel header="#{msgs.HeaderCliente}"
 					style="width: 670px">
 
 					<p:messages autoUpdate="true" />
@@ -29,7 +29,7 @@
 					<p:growl id="msgs" showDetail="true" />
 					<p:panelGrid columns="2">
 
-						<p:outputLabel for="nome" value="Nome completo:" />
+						<p:outputLabel for="nome" value="#{msgs.nomeLista}" />
 						<p:inputText id="nome" size="50" required="true"
 							value="#{controleClienteMB.cliente.nome}" showOn="">
 						</p:inputText>
@@ -44,7 +44,7 @@
 							value="#{controleClienteMB.cliente.email}" showOn="">
 						</p:inputText>
 
-						<p:outputLabel for="telefone" value="Telefone:" />
+						<p:outputLabel for="telefone" value="#{msgs.telefoneLista}" />
 						<p:inputText id="telefone" size="20" required="true"
 							value="#{controleClienteMB.cliente.telefone}" showOn="">
 						</p:inputText>
@@ -52,7 +52,7 @@
 						<p:commandButton value="#{msgs.btnCadastrar}"
 							action="#{controleClienteMB.cadastrarCliente}" />
 
-						<p:outputLabel value="Todos os campos com * são obrigatorios" />
+						<p:outputLabel value="#{msgs.CampoRequerido}" />
 
 					</p:panelGrid>
 

@@ -13,7 +13,7 @@
 
 <ui:composition template="TemplateBase.xhtml">
 
-	<ui:define name="titulo">Lista de promoções</ui:define>
+	<ui:define name="titulo">Listar Clientes</ui:define>
 
 	<ui:define name="conteudoCenter">
 		<h:form id="form">
@@ -21,9 +21,8 @@
 			<p:dataTable id="lista" var="item"
 				value="#{controleClienteMB.clientes}">
 
-				<h:outputText value="testando tag" />
 				<f:facet name="header">
-					<h:outputText value="#{msgs.campoTop2}" />
+					<h:outputText value="#{msgs.HeaderListarCliente}" />
 				</f:facet>
 				<p:column>
 					<f:facet name="header">
